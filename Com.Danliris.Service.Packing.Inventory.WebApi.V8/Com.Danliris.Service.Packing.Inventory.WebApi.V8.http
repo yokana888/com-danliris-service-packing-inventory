@@ -1,0 +1,6 @@
+@Com.Danliris.Service.Packing.Inventory.WebApi.V8_HostAddress = http://localhost:5256
+
+GET {{Com.Danliris.Service.Packing.Inventory.WebApi.V8_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
