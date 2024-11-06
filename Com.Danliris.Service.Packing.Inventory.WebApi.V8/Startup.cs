@@ -183,6 +183,8 @@ using Com.Danliris.Service.Packing.Inventory.Data.Models.ProductByDivisionOrCate
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json.Serialization;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 
 namespace Com.Danliris.Service.Packing.Inventory.WebApi
 {
@@ -213,16 +215,22 @@ namespace Com.Danliris.Service.Packing.Inventory.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString(DEFAULT_CONNECTION) ?? Configuration[DEFAULT_CONNECTION];
+            //var connectionString = Configuration.GetConnectionString(DEFAULT_CONNECTION) ?? Configuration[DEFAULT_CONNECTION];
+            var keyVaultEnpoint = new Uri(Configuration["VaultKey"]);
+            var secretClient = new SecretClient(keyVaultEnpoint, new DefaultAzureCredential());
+
+            KeyVaultSecret kvsDB = secretClient.GetSecret(Configuration["VaultKeyDbSecret"]);
+            KeyVaultSecret kvsServer = secretClient.GetSecret(Configuration["VaultKeyServerSecret"]);
+
             services
                 .AddEntityFrameworkSqlServer()
-                .AddDbContext<PackingInventoryDbContext>(options =>
-                {
-                    options.UseSqlServer(connectionString);
-                    //options.UseSqlServer(connectionString,
-                    //    options => options.EnableRetryOnFailure());
-                });
-
+                //.AddDbContext<PackingInventoryDbContext>(options =>
+                //{
+                //    options.UseSqlServer(connectionString);
+                //    //options.UseSqlServer(connectionString,
+                //    //    options => options.EnableRetryOnFailure());
+                //});
+                .AddDbContext<PackingInventoryDbContext>(option => option.UseSqlServer(string.Concat(kvsDB.Value, kvsServer.Value)));
             RegisterApplicationSetting();
 
             // Register Middleware
@@ -544,7 +552,7 @@ namespace Com.Danliris.Service.Packing.Inventory.WebApi
             //}) 
             .AddNewtonsoftJson(opt =>
             {
-                opt.SerializerSettings.ContractResolver = new DefaultContractResolver();
+               //opt.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
 
             //

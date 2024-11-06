@@ -46,7 +46,7 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
             Dictionary<string, string> OrderDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(order);
             query = QueryHelper<GarmentPackingListModel>.Order(query, OrderDictionary);
 
-            var data = query
+            var data = query.AsEnumerable()
                 .Skip((page - 1) * size)
                 .Take(size)
                 .Select(model => MapToViewModel(model))
