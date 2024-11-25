@@ -182,6 +182,7 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
                 }
             }
             else
+            //masuk sini
             {
                 int counter = 5;
                 int idx = 1;
@@ -244,7 +245,7 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
                         sheet.Cells[$"A3:W3"].Style.Font.Bold = true;
                         #endregion
                         sheet.Cells[$"A6:W6"].Style.Font.Bold = true;
-                        sheet.Cells["A6"].LoadFromDataTable(item.Key, true, (styling == true) ? OfficeOpenXml.Table.TableStyles.Light16 : OfficeOpenXml.Table.TableStyles.Light16);
+                        sheet.Cells["A6"].LoadFromDataTable(item.Key, true/*, (styling == true) ? OfficeOpenXml.Table.TableStyles.Light16 : OfficeOpenXml.Table.TableStyles.Light16*/);
 
                         sheet.Cells[sheet.Dimension.Address].AutoFitColumns();
 
@@ -254,6 +255,7 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
                         int rowNum2 = 1;
                         int rowNum1 = Convert.ToInt32(UnitrowNum[0]);
                         if (UnitrowNum.Length > 1)
+                            //masuk sini
                         {
                             rowNum2 = Convert.ToInt32(rowNum1) + Convert.ToInt32(UnitrowNum[1]);
                         }
@@ -298,49 +300,6 @@ namespace Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Garm
                         sheet.Cells[$"I{(rowNum1 + 5)}:I{(rowNum2 + 5)}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
                         sheet.Cells[$"I{(rowNum1 + 5)}:I{(rowNum2 + 5)}"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
 
-                        //sheet.Cells[$"J{(rowNum1 + 5)}:J{(rowNum2 + 5)}"].Merge = true;
-                        //sheet.Cells[$"J{(rowNum1 + 5)}:J{(rowNum2 + 5)}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-                        //sheet.Cells[$"J{(rowNum1 + 5)}:J{(rowNum2 + 5)}"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-
-                        //sheet.Cells[$"K{(rowNum1 + 5)}:K{(rowNum2 + 5)}"].Merge = true;
-                        //sheet.Cells[$"K{(rowNum1 + 5)}:K{(rowNum2 + 5)}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-                        //sheet.Cells[$"K{(rowNum1 + 5)}:K{(rowNum2 + 5)}"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-
-                        //sheet.Cells[$"L{(rowNum1 + 5)}:L{(rowNum2 + 5)}"].Merge = true;
-                        //sheet.Cells[$"L{(rowNum1 + 5)}:L{(rowNum2 + 5)}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-                        //sheet.Cells[$"L{(rowNum1 + 5)}:L{(rowNum2 + 5)}"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-
-                        //sheet.Cells[$"M{(rowNum1 + 5)}:M{(rowNum2 + 5)}"].Merge = true;
-                        //sheet.Cells[$"M{(rowNum1 + 5)}:M{(rowNum2 + 5)}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-                        //sheet.Cells[$"M{(rowNum1 + 5)}:M{(rowNum2 + 5)}"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-
-                        //sheet.Cells[$"N{(rowNum1 + 5)}:N{(rowNum2 + 5)}"].Merge = true;
-                        //sheet.Cells[$"N{(rowNum1 + 5)}:N{(rowNum2 + 5)}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-                        //sheet.Cells[$"N{(rowNum1 + 5)}:N{(rowNum2 + 5)}"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-
-                        //sheet.Cells[$"O{(rowNum1 + 5)}:O{(rowNum2 + 5)}"].Merge = true;
-                        //sheet.Cells[$"O{(rowNum1 + 5)}:O{(rowNum2 + 5)}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-                        //sheet.Cells[$"O{(rowNum1 + 5)}:O{(rowNum2 + 5)}"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-
-                        //sheet.Cells[$"P{(rowNum1 + 5)}:P{(rowNum2 + 5)}"].Merge = true;
-                        //sheet.Cells[$"P{(rowNum1 + 5)}:P{(rowNum2 + 5)}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-                        //sheet.Cells[$"P{(rowNum1 + 5)}:P{(rowNum2 + 5)}"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-
-                        //sheet.Cells[$"Q{(rowNum1 + 5)}:Q{(rowNum2 + 5)}"].Merge = true;
-                        //sheet.Cells[$"Q{(rowNum1 + 5)}:Q{(rowNum2 + 5)}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-                        //sheet.Cells[$"Q{(rowNum1 + 5)}:Q{(rowNum2 + 5)}"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-
-                        //sheet.Cells[$"R{(rowNum1 + 5)}:R{(rowNum2 + 5)}"].Merge = true;
-                        //sheet.Cells[$"R{(rowNum1 + 5)}:R{(rowNum2 + 5)}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-                        //sheet.Cells[$"R{(rowNum1 + 5)}:R{(rowNum2 + 5)}"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-
-                        //sheet.Cells[$"S{(rowNum1 + 5)}:S{(rowNum2 + 5)}"].Merge = true;
-                        //sheet.Cells[$"S{(rowNum1 + 5)}:S{(rowNum2 + 5)}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-                        //sheet.Cells[$"S{(rowNum1 + 5)}:S{(rowNum2 + 5)}"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-
-                        //sheet.Cells[$"T{(rowNum1 + 5)}:T{(rowNum2 + 5)}"].Merge = true;
-                        //sheet.Cells[$"T{(rowNum1 + 5)}:T{(rowNum2 + 5)}"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-                        //sheet.Cells[$"T{(rowNum1 + 5)}:T{(rowNum2 + 5)}"].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
 
                     }
                 }
