@@ -3,7 +3,7 @@ using Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.GarmentS
 using Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.GarmentShipping.ShippingLocalSalesNoteTS;
 using Com.Danliris.Service.Packing.Inventory.Application.ToBeRefactored.Utilities;
 using Com.Danliris.Service.Packing.Inventory.Infrastructure.IdentityProvider;
-using Com.Danliris.Service.Packing.Inventory.WebApi.Helper;
+using Com.Danliris.Service.Packing.Inventory.WebApi.V8.Helper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Com.Danliris.Service.Packing.Inventory.WebApi.Controllers.GarmentShipping.LocalSalesNoteTS
+namespace Com.Danliris.Service.Packing.Inventory.WebApi.V8.Controllers.GarmentShipping.LocalSalesNoteTS
 {
     [Produces("application/json")]
     [Route("v1/garment-shipping/receipt-subcon-local-sales-notes")]
@@ -49,7 +49,7 @@ namespace Com.Danliris.Service.Packing.Inventory.WebApi.Controllers.GarmentShipp
                 _validateService.Validate(viewModel);
                 var result = await _service.Create(viewModel);
 
-                 return Created("/", result);
+                return Created("/", result);
             }
             catch (ServiceValidationException ex)
             {
@@ -89,7 +89,7 @@ namespace Com.Danliris.Service.Packing.Inventory.WebApi.Controllers.GarmentShipp
         }
 
         [HttpGet]
-        public IActionResult Get([FromQuery] string keyword = null, [FromQuery] int page = 1, [FromQuery] int size = 25, [FromQuery]string order = "{}", [FromQuery] string filter = "{}")
+        public IActionResult Get([FromQuery] string keyword = null, [FromQuery] int page = 1, [FromQuery] int size = 25, [FromQuery] string order = "{}", [FromQuery] string filter = "{}")
         {
             try
             {
@@ -310,7 +310,7 @@ namespace Com.Danliris.Service.Packing.Inventory.WebApi.Controllers.GarmentShipp
         //        return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
         //    }
         //}
-                
+
         //[HttpGet("finance-reports")]
         //public IActionResult GetSalesNoteFinanceReport(string type, int month, int year, string buyer)
         //{
@@ -328,7 +328,7 @@ namespace Com.Danliris.Service.Packing.Inventory.WebApi.Controllers.GarmentShipp
         //        return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
         //    }
         //}
-        
+
         //[HttpGet("localSalesDebtor")]
         //public IActionResult GetLocalSalesDebtor([FromQuery] string type, [FromQuery] int month, [FromQuery] int year)
         //{
